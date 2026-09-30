@@ -1,9 +1,9 @@
-name: Build project
+name: Build
 
 on: [push, pull_request]
 
 jobs:
-  buildForAllSupportedPlatforms:
+  build:
     name: Build for ${{ matrix.targetPlatform }}
     runs-on: ubuntu-latest
     strategy:
