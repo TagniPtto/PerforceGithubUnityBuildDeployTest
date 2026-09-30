@@ -1,11 +1,11 @@
-name: Build
+name: Build project
 
 on: [push, pull_request]
 
 jobs:
-  build:
+  buildForAllSupportedPlatforms:
     name: Build for ${{ matrix.targetPlatform }}
-    runs-on: ubuntu-latest-8-cores
+    runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
@@ -21,7 +21,6 @@ jobs:
           path: Library
           key: Library-${{ matrix.targetPlatform }}
           restore-keys: Library-
-
       - uses: game-ci/unity-builder@v4
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
