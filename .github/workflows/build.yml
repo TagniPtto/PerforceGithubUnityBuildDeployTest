@@ -12,15 +12,10 @@ jobs:
         targetPlatform:
           - WebGL # WebGL.
     steps:
-      - name: Free Disk Space (Aggressive)
-        uses: jlumbroso/free-disk-space@v1.3.1
+      - name: Set up Swap Space (Virtual RAM)
+        uses: pierotofy/set-swap-space@master
         with:
-          tool-cache: true
-          android: true
-          dotnet: true
-          haskell: true
-          large-packages: true    # <-- This is what forcefully uninstalls the massive system software packages
-          swap-storage: true
+          swap-size-gb: 10
 
       - uses: actions/checkout@v4
         with:
@@ -44,7 +39,7 @@ jobs:
           UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
         with:
           targetPlatform: ${{ matrix.targetPlatform }}
-          
+          resource_class: large
       # 4. Upload your output web files
       - uses: actions/upload-artifact@v4
         with:
