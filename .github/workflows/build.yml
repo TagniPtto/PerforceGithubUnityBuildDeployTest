@@ -12,15 +12,14 @@ jobs:
         targetPlatform:
           - WebGL # WebGL.
     steps:
-      # 1. NEW: Reclaim ~30GB+ of hidden space before doing anything else
       - name: Free Disk Space
-        uses: jlumbroso/free-disk-space@v1.3.1
+        uses: endersonmenezes/free-disk-space@v2
         with:
-          tool-cache: true
-          android: true
-          dotnet: true
-          haskell: false # Leave Linux tools intact
-          swap: false
+          remove-dotnet: true
+          remove-android: true
+          remove-haskell: true
+          remove-codeql: true
+          remove-docker-images: true
 
       - uses: actions/checkout@v4
         with:
