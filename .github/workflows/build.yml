@@ -39,7 +39,7 @@ jobs:
           UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
         with:
           targetPlatform: ${{ matrix.targetPlatform }}
-          customParameters: "-maxConcurrentShaderCompilers 1 -marchingCubesJobCount 1 --memory=4g" 
+          customParameters: "-job-worker-count 1 -gc-helper-count 1 -maxConcurrentShaderCompilers 1" 
       # 4. Upload your output web files
       - uses: actions/upload-artifact@v4
         with:
