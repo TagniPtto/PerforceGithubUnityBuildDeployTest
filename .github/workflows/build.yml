@@ -39,7 +39,7 @@ jobs:
           UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
         with:
           targetPlatform: ${{ matrix.targetPlatform }}
-          resource_class: large
+          customParameters: "--memory=4g" 
       # 4. Upload your output web files
       - uses: actions/upload-artifact@v4
         with:
