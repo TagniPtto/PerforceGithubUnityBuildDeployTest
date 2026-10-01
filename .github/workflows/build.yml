@@ -12,14 +12,15 @@ jobs:
         targetPlatform:
           - WebGL # WebGL.
     steps:
-      - name: Free Disk Space
-        uses: endersonmenezes/free-disk-space@v2
+      - name: Free Disk Space (Aggressive)
+        uses: jlumbroso/free-disk-space@v1.3.1
         with:
-          remove-dotnet: true
-          remove-android: true
-          remove-haskell: true
-          remove-codeql: true
-          remove-docker-images: true
+          tool-cache: true
+          android: true
+          dotnet: true
+          haskell: true
+          large-packages: true    # <-- This is what forcefully uninstalls the massive system software packages
+          swap-storage: true
 
       - uses: actions/checkout@v4
         with:
